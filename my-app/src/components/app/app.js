@@ -8,6 +8,17 @@ import PostAddForm from "../post-add-form";
 import './app.css';
 
 const App = () => {
+    const data = [
+        {label: 'Going to learn React', important : true, id : 'sdw' },
+        {label: 'Or not?', important : false, id : 's1ed1sw'},
+        {label: 'I need a brake', important : false, id : 's12aw'},
+         'dsdsdsdsds',
+        '111'
+
+    ];
+
+    const filteredData = data.filter(item => typeof item === 'object'); //if not a obj delete this massage
+
     return(
    <div className="app">
        <AppHeader/>
@@ -15,7 +26,7 @@ const App = () => {
            <SearchPanel/>
            <PostStatusFilter/>
        </div>
-       <PostList/>
+       <PostList posts = {filteredData}/>
        <PostAddForm/>
    </div>
     )
