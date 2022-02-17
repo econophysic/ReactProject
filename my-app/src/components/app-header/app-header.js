@@ -21,11 +21,11 @@ const Header = styled.div`
     }
 `
 
-const AppHeader = () => {
+const AppHeader = ({liked, allPosts}) => {
     return (
         <Header>                              {/*<Header  as='a' href={'Some link'}> can add link prop */}
             <h1>Roman Piven</h1>
-            <h2>X записей понравилось Y</h2>
+            <h2>{allPosts} posts, liked {liked}</h2>
         </Header>
     )
 }
