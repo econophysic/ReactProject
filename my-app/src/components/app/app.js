@@ -32,11 +32,7 @@ export default class App extends Component{
         }
         this.maxId = 4;
     }
-    // filterData = (data) =>{
-    //     this.setState(({data}) => {
-    //         return  data.filter(item => typeof item === 'object')
-    //     });
-    // }
+
     deleteItem = (id) =>{
         this.setState(({data}) => {
             const index = data.findIndex(elem => elem.id === id);

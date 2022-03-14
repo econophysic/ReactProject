@@ -27,7 +27,7 @@ export default class PostAddForm extends Component{
                 onSubmit={this.onSubmit}>
                 <input
                     type="text"
-                    placeholder="Про що думаєте?"
+                    placeholder="What you want add?"
                     className="form-control new-post-label"
                     onChange={this.onValueChange}
                     value ={this.state.text}
