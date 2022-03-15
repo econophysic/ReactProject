@@ -1,7 +1,9 @@
+a{
+    text-decoration: none;
+}
 .header {
-    margin-top: .5rem;
     padding-left: 10px;
-
+    margin:.5rem 1rem 0 ;
 }
 
 .header ul li {
@@ -13,10 +15,6 @@
 
 .header ul li:hover {
     background-color: #444;
-}
-
-.header a:hover {
-    text-decoration: none;
 }
 
 .header h3 a {

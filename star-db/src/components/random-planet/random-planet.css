@@ -1,15 +1,16 @@
 .random-planet {
     display: flex;
     padding: 1rem;
-    width: 15rem;
     margin: 0 1rem 0;
+    flex-direction: row;
+    align-items: center;
 }
 
 .random-planet .planet-image {
     width: 150px;
     height: 150px;
     border-radius: 10px;
-    margin:  1rem 0 1rem;
+    margin:  0 1rem ;
 
 }
 
