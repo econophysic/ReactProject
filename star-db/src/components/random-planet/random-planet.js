@@ -12,7 +12,8 @@ export default class RandomPlanet extends Component {
 
     state = {
         planet: {},
-        loading: true
+        loading: true,
+        buttonClick: false
     };
 
     constructor(props) {
@@ -33,7 +34,7 @@ export default class RandomPlanet extends Component {
             loading : false
         })
     }
-    updatePlanet() {
+    updatePlanet = () =>{
         const id = Math.floor(Math.random()*20) + 2;
         this.swapiService
             .getPlanet(id)
@@ -41,50 +42,35 @@ export default class RandomPlanet extends Component {
             .catch(this.onError);
     }
 
+    onClick = () => {
+        this.setState({
+            buttonClick: !this.state.buttonClick,
+        });
+    }
+
     render() {
 
-        const { planet, loading, error } = this.state;
+        const { planet, loading, error , buttonClick} = this.state;
 
         const hasData = !(error || loading);
         const errorMessage = error ? <ErrorIndicator/> : null;
         const spinner = loading ? <Spinner/> : null;
-        const content = hasData ? <PlanetView planet={planet}/> : null;
+        const content = hasData && !buttonClick ? <PlanetView planet={planet}/> : null;
         return (
-            <div className="random-planet jumbotron rounded card">
-                {errorMessage}
-                {spinner}
-                {content}
-            </div>
+            <>
+                <div className="random-planet jumbotron rounded card">
+                    {errorMessage}
+                    {spinner}
+                    {content}
+
+
+                </div>
+                <button className="random-button"
+                onClick= {this.onClick}
+                >
+                    Toggle Random Planet
+                </button>
+            </>
         );
     }
 }
-
-// const PlanetView = ({ planet }) => {
-//     const { id, name, population,
-//         rotationPeriod, diameter} = planet;
-//     return(
-//         <>
-//             <img className="planet-image"
-//                  src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
-//                  title={name}
-//             />
-//             <div>
-//                 <h4>{name}</h4>
-//                 <ul className="list-group list-group-flush">
-//                     <li className="list-group-item">
-//                         <span className="term">Population</span>
-//                         <span>{population}</span>
-//                     </li>
-//                     <li className="list-group-item">
-//                         <span className="term">Rotation Period</span>
-//                         <span>{rotationPeriod}</span>
-//                     </li>
-//                     <li className="list-group-item">
-//                         <span className="term">Diameter</span>
-//                         <span>{diameter}</span>
-//                     </li>
-//                 </ul>
-//             </div>
-//         </>
-//     );
-// }

@@ -25,3 +25,17 @@
 .random-planet .list-group-item .term {
     margin-right: .5rem;
 }
+
+.random-button{
+    background-color: #cf850f;
+    color: white;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 1rem 1rem 0;
+}
+.random-button:hover{
+    background-color: #8e5c0b;
+    color: #fbebd0;
+}
