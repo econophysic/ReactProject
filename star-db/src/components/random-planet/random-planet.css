@@ -4,15 +4,13 @@
     margin: 0 1rem 0;
     flex-direction: row;
     align-items: center;
-
 }
 
 .random-planet .planet-image {
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
     border-radius: 10px;
     margin:  0 1rem ;
-
 }
 
 .random-planet .list-group {
