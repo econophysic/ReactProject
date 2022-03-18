@@ -43,7 +43,6 @@ export default  class SwapiService {
 
     _extraId(item){
         const idRegEx = /\/([0-9]*)\/$/;
-        console.log(`Planet id is ${item.url.match(idRegEx)[1]}`);
         return item.url.match(idRegEx)[1];
     }
 

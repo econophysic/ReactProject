@@ -19,7 +19,10 @@ export default class RandomPlanet extends Component {
     componentDidMount() {
         this.updatePlanet();
         this.interval = setInterval(this.updatePlanet, 2500);
-        // clearInterval(this.interval)
+
+    }
+    componentWillUnmount() {
+        clearInterval(this.interval);
     }
 
     onPlanetLoaded = (planet) =>{
@@ -63,8 +66,6 @@ export default class RandomPlanet extends Component {
                     {errorMessage}
                     {spinner}
                     {content}
-
-
                 </div>
                 <button className="random-button"
                 onClick= {this.onClick}
