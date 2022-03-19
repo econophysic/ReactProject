@@ -31,13 +31,15 @@ export default class RandomPlanet extends Component {
             loading:false,
             error: false
         });
-    }
+    };
+
     onError = (err) =>{
         this.setState({
             error: true,
             loading : false
         })
     }
+
     updatePlanet = () =>{
         const id = Math.floor(Math.random()*20) + 2;
         this.swapiService

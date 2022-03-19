@@ -22,8 +22,8 @@ export default class PeoplePage extends Component{
     onPersonSelected = (selectedPerson) => {
         this.setState({
             selectedPerson
-        })
-        console.log(selectedPerson)
+        });
+        console.log("selected "+selectedPerson)
     };
 
     render() {

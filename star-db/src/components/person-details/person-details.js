@@ -28,19 +28,22 @@ export default class PersonDetails extends Component {
         console.log('error')
     }
 
-    updatePerson() {
+    onPersonLoaded = (person) => {
+        this.setState({
+            person,
+            loading: false
+        });
+    }
+
+    updatePerson =()=> {
         const { personId } = this.props;
         if (!personId) {
             return
         }
+        console.log("personID "+personId);
         this.swapiService
             .getPerson(personId)
-            .then((person) => {
-                this.setState({
-                    person,
-                    loading: false
-                });
-            })
+            .then(this.onPersonLoaded)
             .catch(this.onError)
     }
 
