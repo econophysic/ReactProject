@@ -3,8 +3,8 @@ import React, {Component} from 'react';
 import './random-planet.css';
 import SwapiService from '../../services/swapi-services';
 import Spinner from "../loading-spinner/loading-spiner";
-import ErrorIndicator from "../error-indicator";
 import PlanetView from "./planet-view";
+import ErrorBoundry from "../error-boundry";
 
 
 export default class RandomPlanet extends Component {
@@ -19,7 +19,6 @@ export default class RandomPlanet extends Component {
     componentDidMount() {
         this.updatePlanet();
         this.interval = setInterval(this.updatePlanet, 4500);
-
     }
     componentWillUnmount() {
         clearInterval(this.interval);
@@ -27,7 +26,6 @@ export default class RandomPlanet extends Component {
 
     onError = (err) =>{
         this.setState({
-            error: true,
             loading : false
         })
     }
@@ -35,12 +33,11 @@ export default class RandomPlanet extends Component {
         this.setState({
             planet,
             loading:false,
-            error: false
         });
     };
 
     updatePlanet = () =>{
-        const id = Math.floor(Math.random()*20) + 2;
+        const id = Math.floor(Math.random()*23) + 2;
         this.swapiService
             .getPlanet(id)
             .then(this.onPlanetLoaded)
@@ -55,16 +52,14 @@ export default class RandomPlanet extends Component {
 
     render() {
 
-        const { planet, loading, error , buttonClick} = this.state;
+        const { planet, loading, buttonClick} = this.state;
 
-        const hasData = !(error || loading);
-        const errorMessage = error ? <ErrorIndicator/> : null;
+        const hasData = !loading;
         const spinner = loading ? <Spinner/> : null;
         const content = hasData && !buttonClick ? <PlanetView planet={planet}/> : null;
         return (
-            <>
+            <ErrorBoundry>
                 <div className="random-planet jumbotron rounded card">
-                    {errorMessage}
                     {spinner}
                     {content}
                 </div>
@@ -73,7 +68,7 @@ export default class RandomPlanet extends Component {
                 >
                     Toggle Random Planet
                 </button>
-            </>
+            </ErrorBoundry>
         );
     }
 }
