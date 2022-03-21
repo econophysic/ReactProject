@@ -16,6 +16,7 @@ export default class PersonDetails extends Component {
     componentDidMount() {
         this.updatePerson();
     }
+
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.personId !== prevProps.personId) {
             // console.log(1);
@@ -25,7 +26,10 @@ export default class PersonDetails extends Component {
     }
 
     onError = (err) =>{
-        console.log('error')
+        this.setState({
+            error: true,
+            loading : false
+        })
     }
 
     onPersonLoaded = (person) => {
@@ -35,7 +39,7 @@ export default class PersonDetails extends Component {
         });
     }
 
-    updatePerson =()=> {
+    updatePerson = () => {
         const { personId } = this.props;
         if (!personId) {
             return
@@ -54,10 +58,9 @@ export default class PersonDetails extends Component {
 
         const { person: {
             id, name, gender,
-            birthYear, eyeColor }, loading } = this.state;
+            eyeColor, birthYear }, loading } = this.state;
 
         const spinner = loading ? <Spinner /> : null;
-
         return (
             <div className="person-details card">
                 { spinner }
@@ -70,21 +73,21 @@ export default class PersonDetails extends Component {
                     <h4>{ name }</h4>
                     <ul className="list-group list-group-flush">
                         <li className="list-group-item">
-                            <span className="term">Gender</span>
+                            <span className="term">Gender:</span>
                             <span>{ gender }</span>
                         </li>
                         <li className="list-group-item">
-                            <span className="term">Birth Year</span>
+                            <span className="term">Birth Year:</span>
                             <span>{ birthYear }</span>
                         </li>
                         <li className="list-group-item">
-                            <span className="term">Eye Color</span>
+                            <span className="term">Eye Color:</span>
                             <span>{ eyeColor }</span>
                         </li>
                     </ul>
                 </div>
             </div>
-        )
+        );
     }
 }
 

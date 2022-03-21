@@ -1,4 +1,5 @@
 import React from "react";
+import joda from './joda.jpg'
 
 const PlanetView = ({ planet }) => {
     const { id, name, population,
@@ -6,8 +7,12 @@ const PlanetView = ({ planet }) => {
     return(
         <>
             <img className="planet-image"
-                 src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
-                 title={name}
+                src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
+                onError={({ currentTarget }) => {
+                    currentTarget.onerror = null;
+                    currentTarget.src = joda;
+                }}
+                 alt={name}
             />
             <div>
                 <h4>{name}</h4>
