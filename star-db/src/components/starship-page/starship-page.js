@@ -5,11 +5,13 @@ import SwapiService from "../../services/swapi-services";
 import ItemDetails from "../item-details";
 import ErrorBoundry from "../error-boundry";
 import {Record} from "../item-details/item-details";
+import joda from '../../img/joda.jpg'
 
 export default class StarshipPage extends Component{
     swapiService = new SwapiService();
     state = {
-        selectedStarship: 5
+        selectedStarship: 5,
+        crushURL: false
     }
 
     onStarshipSelected = (selectedStarship) => {
@@ -21,7 +23,7 @@ export default class StarshipPage extends Component{
     render() {
         const { getStarship, getStarshipImage,
                 getAllStarships } = this.swapiService;
-        const { selectedStarship } = this.state;
+        const { selectedStarship, crushURL } = this.state;
 
         const starshipList =(
             <ErrorBoundry>
@@ -38,7 +40,8 @@ export default class StarshipPage extends Component{
             <ItemDetails
                 itemId = {selectedStarship}
                 getData = {getStarship}
-                getImageUrl ={getStarshipImage}>
+                getImageUrl ={!crushURL ? getStarshipImage : joda}
+                getStarshipImage ={getStarshipImage}>
 
                 <Record field="costInCredits" label="Cost"/>
                 <Record field="crew" label="Crew"/>

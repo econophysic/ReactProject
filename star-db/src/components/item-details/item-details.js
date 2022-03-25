@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './item-details.css';
 import Spinner from "../loading-spinner/loading-spiner";
+import joda from '../../img/dart.jpg'
 
 const Record = ({item, field, label}) => {
     return (
@@ -48,6 +49,7 @@ export default class ItemDetails extends Component {
 
     updateItem = () => {
         const { itemId, getData, getImageUrl} = this.props;
+        const { image } = this.state;
         if (!itemId) {
             return
         }
@@ -75,6 +77,10 @@ export default class ItemDetails extends Component {
                 { spinner }
                 <img className="item-image"
                      src={image}
+                     onError={({ currentTarget }) => {
+                         currentTarget.onerror = null;
+                         currentTarget.src = joda;
+                     }}
                      alt={name}
                 />
 

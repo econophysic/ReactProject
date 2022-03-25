@@ -2,6 +2,20 @@ export default  class SwapiService {
     _apiBase = 'https://swapi.dev/api/';
     _imageBase = 'https://starwars-visualguide.com/assets/img/'
 
+     checkExists(imageUrl, callback) {
+        let img = new Image();
+
+        img.onerror = function() {
+            callback(false);
+        };
+
+        img.onload = function() {
+            callback(true);
+        };
+
+        img.src = imageUrl;
+    }
+
     getResource = async(url) => {
         const res = await fetch(`${this._apiBase}${url}`);
 

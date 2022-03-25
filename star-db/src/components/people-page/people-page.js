@@ -39,7 +39,8 @@ export default class PeoplePage extends Component{
                 <ItemDetails
                     itemId = {selectedPerson}
                     getData = {getPerson}
-                    getImageUrl ={getPersonImage}>
+                    getImageUrl ={getPersonImage}
+                >
 
                     <Record field="gender" label="Gender"/>
                     <Record field="eyeColor" label="Eye Color"/>

@@ -1,5 +1,5 @@
 import React from "react";
-import joda from './joda.jpg'
+import joda from '../../img/joda.jpg'
 
 const PlanetView = ({ planet }) => {
     const { id, name, population,
