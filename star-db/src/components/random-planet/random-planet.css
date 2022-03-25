@@ -1,7 +1,7 @@
 .random-planet {
     display: flex;
     padding: 1rem;
-    margin: 0 1rem 0;
+    margin: 0 1.5rem 0;
     flex-direction: row;
     align-items: center;
 }
@@ -33,7 +33,7 @@
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    margin: 1rem 1rem 0;
+    margin: 1.5rem 1.5rem 0;
 }
 .random-button:hover{
     background-color: #8e5c0b;
