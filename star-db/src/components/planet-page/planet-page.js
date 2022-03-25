@@ -8,16 +8,24 @@ import {Record} from "../item-details/item-details";
 
 export default class StarshipPage extends Component{
     swapiService = new SwapiService();
-    state = {};
+    state ={
+        selectedPlanet: 5
+    }
 
+    onPlanetSelected = (selectedPlanet) => {
+        this.setState({
+            selectedPlanet
+        });
+    };
     render() {
         const { getPlanet, getPlanetImage,
             getAllPlanets } = this.swapiService;
+        const { selectedPlanet } = this.state;
 
         const planetList = (
            <ErrorBoundry>
                <ItemList
-                   onItemSelected = {this.onPersonSelected}
+                   onItemSelected = {this.onPlanetSelected}
                    getData = {getAllPlanets}
                    renderItem = { ({name, diameter,population}) => (
                        `${name} ( diameter: ${diameter}, population: ${population} )`) }
@@ -27,7 +35,7 @@ export default class StarshipPage extends Component{
 
         const planetDetails = (
             <ItemDetails
-                itemId = {4}
+                itemId = {selectedPlanet}
                 getData = {getPlanet}
                 getImageUrl = {getPlanetImage}>
 

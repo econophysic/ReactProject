@@ -23,6 +23,7 @@ export default class PeoplePage extends Component{
     render() {
         const { getPerson, getPersonImage,
                 getAllPeople } = this.swapiService;
+        const { selectedPerson } = this.state;
         const peopleList = (
             <ErrorBoundry>
                 <ItemList
@@ -36,7 +37,7 @@ export default class PeoplePage extends Component{
 
         const personDetails = (
                 <ItemDetails
-                    itemId = {5}
+                    itemId = {selectedPerson}
                     getData = {getPerson}
                     getImageUrl ={getPersonImage}>
 
