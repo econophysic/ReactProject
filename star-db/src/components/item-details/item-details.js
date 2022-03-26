@@ -49,7 +49,6 @@ export default class ItemDetails extends Component {
 
     updateItem = () => {
         const { itemId, getData, getImageUrl} = this.props;
-        const { image } = this.state;
         if (!itemId) {
             return
         }
@@ -65,10 +64,11 @@ export default class ItemDetails extends Component {
     }
 
     render() {
-        if (!this.state.item) {
+        const { item, loading, image } = this.state;
+
+        if (!item) {
             return <span>Select a item from a list</span>
         }
-        const { item, loading, image } = this.state;
         const { name } = item;
 
         const spinner = loading ? <Spinner /> : null;
