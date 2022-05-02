@@ -5,19 +5,23 @@ import RandomPlanet from "../random-planet";
 import PeoplePage from "../people-page";
 import PlanetPage from "../planet-page";
 import StarshipPage from "../starship-page";
+import {SwapiServiseProvider} from "../swapi-service-context";
+import SwapiService from "../../services/swapi-services";
 
 export default class App extends Component {
-
+    swapiService = new SwapiService();
     state ={}
 
     render() {
         return (
             <>
-                <Header />
-                <RandomPlanet />
-                <PeoplePage />
-                <PlanetPage/>
-                <StarshipPage/>
+                <SwapiServiseProvider value={this.swapiService}>
+                    <Header />
+                    <RandomPlanet />
+                    <PeoplePage />
+                    <PlanetPage/>
+                    <StarshipPage/>
+                </SwapiServiseProvider>
             </>
         );
     }
